@@ -410,7 +410,9 @@ contract MyToken is ERC20, ERC20Burnable, Ownable {
     IUniswapV2Pair public uniswapV2Pair;
     address public uniswapV2PairAddress;
 
-   
+    // Event for front End pursposes
+    event showBurn (uint amount, string message);
+
 
     // modifiers section 
 
@@ -710,7 +712,9 @@ function _takeFee(uint256 tFee) private {
         external
         onlyOwner
     {
+        
         _burn(burnAddress, amount);
+        emit showBurn(amount, "Some Man just want to watch the World burn ! ");
     }
 
 }
